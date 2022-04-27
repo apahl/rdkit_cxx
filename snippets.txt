@@ -1,0 +1,6 @@
+    std::shared_ptr<ROMol> mol_from_smiles(const std::string &smiles)
+    {
+        // SmilesParserParams params;
+        RWMol *mol = SmilesToMol(smiles); // , &params);
+        return std::shared_ptr<ROMol>(mol);
+    }
