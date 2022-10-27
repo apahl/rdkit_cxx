@@ -45,3 +45,18 @@ fn descriptors() {
     assert!(is_close(m.clogp(), 1.0462));
     assert!(is_close(m.tpsa(), 29.1));
 }
+
+#[test]
+fn murcko() {
+    // Benzamide -> benzene scaffold
+    let smi = "c1ccccc1C(=O)NC";
+    let m = Mol::from_smiles(smi).unwrap();
+    let murcko_num_ha = m.murcko_mol().num_atoms();
+    assert_eq!(murcko_num_ha, 6);
+
+    // No ring -> no scaffold!
+    let smi = "CCN";
+    let m = Mol::from_smiles(smi).unwrap();
+    let murcko_mol = m.murcko_mol();
+    assert_eq!(murcko_mol.to_smiles(), "");
+}

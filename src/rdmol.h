@@ -4,6 +4,7 @@
 #include "GraphMol/SmilesParse/SmilesWrite.h"
 #include "GraphMol/Descriptors/MolDescriptors.h"
 #include "GraphMol/Descriptors/MolSurf.h"
+#include "GraphMol/ChemTransforms/ChemTransforms.h"
 
 namespace RDKit
 {
@@ -32,6 +33,9 @@ namespace RDKit
     double clogp(std::shared_ptr<ROMol> mol);
 
     double tpsa(std::shared_ptr<ROMol> mol);
+
+    std::shared_ptr<ROMol> murcko_mol(std::shared_ptr<ROMol> mol);
+
 
 
 } // namespace RDKit

@@ -4,6 +4,7 @@
 #include "GraphMol/SmilesParse/SmilesWrite.h"
 #include "GraphMol/Descriptors/MolDescriptors.h"
 #include "GraphMol/Descriptors/MolSurf.h"
+#include "GraphMol/ChemTransforms/ChemTransforms.h"
 
 #include "GraphMol/Depictor/RDDepictor.h"
 #include "GraphMol/MolDraw2D/MolDraw2DSVG.h"
@@ -75,6 +76,13 @@ namespace RDKit
     double tpsa(std::shared_ptr<ROMol> mol) {
         return Descriptors::calcTPSA(*mol);
     };
+
+    // Scaffolds
+    std::shared_ptr<ROMol> murcko_mol(std::shared_ptr<ROMol> mol) {
+        std::shared_ptr<ROMol> mmol(MurckoDecompose(*mol));
+        return mmol;
+    };
+
 
 
 
